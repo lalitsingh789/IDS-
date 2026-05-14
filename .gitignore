@@ -44,25 +44,6 @@ frontend/dist/
 frontend/.env
 
 # ===============================
-# MACHINE LEARNING MODELS
-# ===============================
-*.pkl
-*.joblib
-*.h5
-*.pt
-*.pth
-*.onnx
-
-# ===============================
-# DATASETS
-# ===============================
-*.csv
-*.xlsx
-*.xls
-datasets/
-backend/datasets/
-
-# ===============================
 # DATABASE FILES
 # ===============================
 *.db
