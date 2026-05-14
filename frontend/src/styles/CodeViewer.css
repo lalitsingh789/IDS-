@@ -1,0 +1,499 @@
+/* =========================================
+   CodeViewer.css — IDS Sentinel IDE theme
+   Place in src/styles/CodeViewer.css
+   ========================================= */
+
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600&family=Share+Tech+Mono&family=Orbitron:wght@600&display=swap');
+
+/* ── Root layout ── */
+.cv-root {
+  display: grid;
+  grid-template-columns: 220px 1fr;
+  height: calc(100vh - 52px); /* account for app nav tabs */
+  background: #0d1117;
+  font-family: 'JetBrains Mono', 'Share Tech Mono', monospace;
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity 0.35s ease, transform 0.35s ease;
+  overflow: hidden;
+}
+
+.cv-root.cv-in {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ─────────────────────────────────────────
+   SIDEBAR — file tree
+───────────────────────────────────────── */
+.cv-sidebar {
+  background: #0a0f14;
+  border-right: 1px solid rgba(0, 224, 200, 0.08);
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(0, 224, 200, 0.1) transparent;
+}
+
+.cv-sidebar::-webkit-scrollbar       { width: 4px; }
+.cv-sidebar::-webkit-scrollbar-track { background: transparent; }
+.cv-sidebar::-webkit-scrollbar-thumb { background: rgba(0,224,200,0.12); border-radius: 2px; }
+
+.cv-sb-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 14px 8px;
+  font-size: 9px;
+  letter-spacing: 0.18em;
+  color: rgba(0, 224, 200, 0.35);
+  border-bottom: 1px solid rgba(0, 224, 200, 0.06);
+  flex-shrink: 0;
+}
+
+.cv-sb-project {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 14px;
+  font-size: 10px;
+  color: rgba(226, 232, 240, 0.4);
+  letter-spacing: 0.1em;
+  border-bottom: 1px solid rgba(0, 224, 200, 0.05);
+}
+
+.cv-sb-proj-icon {
+  color: #00e0c8;
+  font-size: 12px;
+}
+
+/* ── Category group ── */
+.cv-sb-group {
+  padding: 6px 0;
+  border-bottom: 1px solid rgba(0, 224, 200, 0.04);
+}
+
+.cv-sb-cat {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 14px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 9px;
+  color: rgba(0, 224, 200, 0.4);
+  letter-spacing: 0.14em;
+  text-align: left;
+  transition: color 0.15s;
+}
+
+.cv-sb-cat:hover { color: rgba(0, 224, 200, 0.7); }
+
+.cv-sb-arrow {
+  font-size: 7px;
+  width: 10px;
+  flex-shrink: 0;
+}
+
+/* ── File entry ── */
+.cv-sb-file {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 14px 6px 24px;
+  background: none;
+  border: none;
+  border-left: 2px solid transparent;
+  cursor: pointer;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  color: rgba(226, 232, 240, 0.4);
+  text-align: left;
+  transition: all 0.14s;
+  position: relative;
+}
+
+.cv-sb-file:hover {
+  background: rgba(0, 224, 200, 0.04);
+  color: rgba(226, 232, 240, 0.75);
+}
+
+.cv-sb-file--active {
+  background: rgba(0, 224, 200, 0.06) !important;
+  border-left-color: #00e0c8;
+  color: #e2e8f0 !important;
+}
+
+.cv-sb-file-icon {
+  font-size: 12px;
+  flex-shrink: 0;
+}
+
+.cv-sb-file-name {
+  flex: 1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.cv-sb-file-lang {
+  font-size: 8px;
+  color: rgba(0, 224, 200, 0.25);
+  letter-spacing: 0.1em;
+  flex-shrink: 0;
+}
+
+/* ─────────────────────────────────────────
+   MAIN EDITOR AREA
+───────────────────────────────────────── */
+.cv-main {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  background: #0d1117;
+}
+
+/* ── Tab bar ── */
+.cv-tabs {
+  display: flex;
+  align-items: stretch;
+  background: #090e13;
+  border-bottom: 1px solid rgba(0, 224, 200, 0.08);
+  overflow-x: auto;
+  scrollbar-width: none;
+  flex-shrink: 0;
+}
+
+.cv-tabs::-webkit-scrollbar { display: none; }
+
+.cv-tab {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding: 0 18px;
+  height: 36px;
+  background: none;
+  border: none;
+  border-right: 1px solid rgba(0, 224, 200, 0.06);
+  border-bottom: 2px solid transparent;
+  cursor: pointer;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  color: rgba(226, 232, 240, 0.35);
+  white-space: nowrap;
+  transition: all 0.14s;
+  position: relative;
+}
+
+.cv-tab:hover {
+  color: rgba(226, 232, 240, 0.65);
+  background: rgba(0, 224, 200, 0.03);
+}
+
+.cv-tab--active {
+  color: #e2e8f0 !important;
+  border-bottom-color: #00e0c8;
+  background: rgba(0, 224, 200, 0.05) !important;
+}
+
+.cv-tab-icon { font-size: 12px; }
+
+.cv-tab-dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: #00e0c8;
+  box-shadow: 0 0 5px rgba(0,224,200,0.6);
+  margin-left: 2px;
+}
+
+/* ── File meta bar ── */
+.cv-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 18px;
+  background: rgba(0, 0, 0, 0.2);
+  border-bottom: 1px solid rgba(0, 224, 200, 0.06);
+  flex-shrink: 0;
+  gap: 12px;
+}
+
+.cv-meta-left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 0;
+}
+
+.cv-meta-name {
+  font-size: 12px;
+  color: #e2e8f0;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.cv-meta-sep { color: rgba(226,232,240,0.2); }
+
+.cv-meta-desc {
+  font-size: 11px;
+  color: rgba(226,232,240,0.3);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.cv-meta-right {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.cv-badge {
+  font-size: 9px;
+  padding: 2px 8px;
+  border-radius: 2px;
+  letter-spacing: 0.1em;
+  font-family: 'Share Tech Mono', monospace;
+}
+
+.cv-badge--lang {
+  background: rgba(0, 224, 200, 0.1);
+  border: 1px solid rgba(0, 224, 200, 0.2);
+  color: #00e0c8;
+}
+
+.cv-badge--lines {
+  background: rgba(56, 189, 248, 0.08);
+  border: 1px solid rgba(56, 189, 248, 0.15);
+  color: rgba(56, 189, 248, 0.7);
+}
+
+/* ── Toolbar ── */
+.cv-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 18px;
+  border-bottom: 1px solid rgba(0, 224, 200, 0.06);
+  background: rgba(0,0,0,0.1);
+  gap: 14px;
+  flex-shrink: 0;
+}
+
+.cv-search-wrap {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  flex: 1;
+  max-width: 440px;
+  position: relative;
+}
+
+.cv-search-icon {
+  position: absolute;
+  left: 11px;
+  color: rgba(0, 224, 200, 0.3);
+  pointer-events: none;
+}
+
+.cv-search {
+  width: 100%;
+  height: 32px;
+  background: rgba(0, 224, 200, 0.04);
+  border: 1px solid rgba(0, 224, 200, 0.12);
+  border-radius: 2px;
+  color: #e2e8f0;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  padding: 0 90px 0 34px;
+  outline: none;
+  transition: border-color 0.18s;
+  letter-spacing: 0.02em;
+}
+
+.cv-search::placeholder { color: rgba(0, 224, 200, 0.2); }
+.cv-search:focus         { border-color: rgba(0, 224, 200, 0.35); }
+
+.cv-match-count {
+  position: absolute;
+  right: 30px;
+  font-size: 10px;
+  color: rgba(0, 224, 200, 0.5);
+  pointer-events: none;
+  white-space: nowrap;
+}
+
+.cv-search-clear {
+  position: absolute;
+  right: 8px;
+  background: none;
+  border: none;
+  color: rgba(226, 232, 240, 0.3);
+  cursor: pointer;
+  font-size: 16px;
+  line-height: 1;
+  padding: 0 2px;
+  transition: color 0.15s;
+}
+
+.cv-search-clear:hover { color: #e2e8f0; }
+
+.cv-toolbar-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.cv-action-btn {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  height: 32px;
+  padding: 0 14px;
+  background: rgba(0, 224, 200, 0.06);
+  border: 1px solid rgba(0, 224, 200, 0.18);
+  border-radius: 2px;
+  color: rgba(0, 224, 200, 0.7);
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  cursor: pointer;
+  transition: all 0.15s;
+  white-space: nowrap;
+}
+
+.cv-action-btn:hover {
+  background: rgba(0, 224, 200, 0.12);
+  border-color: rgba(0, 224, 200, 0.35);
+  color: #00e0c8;
+}
+
+.cv-action-btn--dl {
+  background: rgba(167, 139, 250, 0.06);
+  border-color: rgba(167, 139, 250, 0.18);
+  color: rgba(167, 139, 250, 0.7);
+}
+
+.cv-action-btn--dl:hover {
+  background: rgba(167, 139, 250, 0.12);
+  border-color: rgba(167, 139, 250, 0.35);
+  color: #a78bfa;
+}
+
+/* ── Editor / code pane ── */
+.cv-editor {
+  flex: 1;
+  overflow-y: auto;
+  overflow-x: auto;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(0, 224, 200, 0.1) transparent;
+}
+
+.cv-editor::-webkit-scrollbar       { width: 8px; height: 8px; }
+.cv-editor::-webkit-scrollbar-track { background: #090e13; }
+.cv-editor::-webkit-scrollbar-thumb { background: rgba(0,224,200,0.12); border-radius: 4px; }
+.cv-editor::-webkit-scrollbar-thumb:hover { background: rgba(0,224,200,0.22); }
+
+.cv-code-pane {
+  min-width: max-content;
+  padding: 12px 0 24px;
+}
+
+/* ── Individual line ── */
+.cv-line {
+  display: flex;
+  align-items: flex-start;
+  min-height: 21px;
+  padding: 0;
+  transition: background 0.1s;
+}
+
+.cv-line:hover { background: rgba(255,255,255,0.025); }
+
+.cv-line--match {
+  background: rgba(245, 158, 11, 0.08) !important;
+  border-left: 2px solid rgba(245, 158, 11, 0.5);
+}
+
+/* Line number */
+.cv-ln {
+  display: inline-block;
+  min-width: 52px;
+  padding: 0 18px 0 0;
+  text-align: right;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  line-height: 21px;
+  color: rgba(0, 224, 200, 0.18);
+  user-select: none;
+  flex-shrink: 0;
+  border-right: 1px solid rgba(0, 224, 200, 0.06);
+  margin-right: 18px;
+}
+
+.cv-line:hover .cv-ln { color: rgba(0, 224, 200, 0.4); }
+
+/* Code text */
+.cv-code {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12.5px;
+  line-height: 21px;
+  white-space: pre;
+  tab-size: 4;
+  letter-spacing: 0.01em;
+}
+
+/* ── Status bar ── */
+.cv-statusbar {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  height: 24px;
+  background: rgba(0, 224, 200, 0.07);
+  border-top: 1px solid rgba(0, 224, 200, 0.1);
+  padding: 0 14px;
+  flex-shrink: 0;
+}
+
+.cv-status-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 10px;
+  color: rgba(0, 224, 200, 0.4);
+  letter-spacing: 0.1em;
+  padding: 0 12px;
+  border-right: 1px solid rgba(0, 224, 200, 0.08);
+  height: 100%;
+}
+
+.cv-status-item--right {
+  margin-left: auto;
+  border-right: none;
+  border-left: 1px solid rgba(0, 224, 200, 0.08);
+  color: rgba(0, 224, 200, 0.3);
+}
+
+.cv-status-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #00e0c8;
+  box-shadow: 0 0 5px rgba(0,224,200,0.6);
+}
+
+/* ── Responsive ── */
+@media (max-width: 780px) {
+  .cv-root { grid-template-columns: 1fr; }
+  .cv-sidebar { display: none; }
+  .cv-meta-desc { display: none; }
+}

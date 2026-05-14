@@ -1,0 +1,321 @@
+.root {
+  min-height: 100vh;
+  background: #060d12;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Share Tech Mono', monospace;
+  position: relative;
+  overflow: hidden;
+}
+
+.gridBg {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(0, 224, 200, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 224, 200, 0.04) 1px, transparent 1px);
+  background-size: 40px 40px;
+  pointer-events: none;
+}
+
+.scanLine {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(0, 224, 200, 0.15),
+    transparent
+  );
+  pointer-events: none;
+  z-index: 1;
+  transition: top 0.02s linear;
+}
+
+.corner {
+  position: absolute;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.statusBar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 36px;
+  border-bottom: 1px solid rgba(0, 224, 200, 0.12);
+  display: flex;
+  align-items: center;
+  padding: 0 24px;
+  gap: 10px;
+  z-index: 5;
+}
+
+.statusDot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #00e0c8;
+  box-shadow: 0 0 6px #00e0c8;
+  flex-shrink: 0;
+}
+
+.statusText {
+  font-size: 10px;
+  color: rgba(0, 224, 200, 0.45);
+  letter-spacing: 0.1em;
+}
+
+.card {
+  position: relative;
+  z-index: 10;
+  width: 380px;
+  padding: 36px 36px 28px;
+  background: rgba(6, 13, 18, 0.92);
+  border: 1px solid rgba(0, 224, 200, 0.2);
+  border-radius: 2px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0;
+}
+
+.iconWrap {
+  position: relative;
+  margin-bottom: 18px;
+}
+
+.iconPing {
+  position: absolute;
+  inset: -6px;
+  border-radius: 50%;
+  border: 1px solid rgba(0, 224, 200, 0.4);
+  animation: ping 2.5s ease-in-out infinite;
+  pointer-events: none;
+}
+
+.title {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 22px;
+  font-weight: 700;
+  color: #00e0c8;
+  letter-spacing: 0.25em;
+  margin-bottom: 6px;
+  text-align: center;
+}
+
+.titleGlitch {
+  text-shadow: 2px 0 #ff0044, -2px 0 #00e0c8;
+}
+
+.subtitle {
+  font-size: 9px;
+  color: rgba(0, 224, 200, 0.4);
+  letter-spacing: 0.18em;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.divider {
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(0, 224, 200, 0.25),
+    transparent
+  );
+  margin-bottom: 26px;
+}
+
+.fieldGroup {
+  width: 100%;
+  margin-bottom: 18px;
+}
+
+.label {
+  display: block;
+  font-size: 9px;
+  color: rgba(0, 224, 200, 0.5);
+  letter-spacing: 0.15em;
+  margin-bottom: 8px;
+}
+
+.inputWrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.inputIcon {
+  position: absolute;
+  left: 12px;
+  color: rgba(0, 224, 200, 0.4);
+  pointer-events: none;
+}
+
+.input {
+  width: 100%;
+  height: 42px;
+  background: rgba(0, 224, 200, 0.04);
+  border: 1px solid rgba(0, 224, 200, 0.18);
+  border-radius: 2px;
+  color: #00e0c8;
+  font-size: 13px;
+  font-family: 'Share Tech Mono', monospace;
+  padding: 0 40px 0 38px;
+  transition: border-color 0.2s;
+  box-sizing: border-box;
+}
+
+.eyeBtn {
+  position: absolute;
+  right: 10px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+  display: flex;
+  align-items: center;
+}
+
+.error {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255, 0, 68, 0.08);
+  border: 1px solid rgba(255, 0, 68, 0.25);
+  border-radius: 2px;
+  padding: 10px 14px;
+  font-size: 11px;
+  color: #ff4466;
+  letter-spacing: 0.05em;
+  margin-bottom: 16px;
+}
+
+.errorDot {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: rgba(255, 0, 68, 0.2);
+  border: 1px solid rgba(255, 0, 68, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  font-weight: 700;
+  color: #ff4466;
+  flex-shrink: 0;
+}
+
+.submitBtn {
+  width: 100%;
+  height: 46px;
+  background: rgba(0, 224, 200, 0.1);
+  border: 1px solid rgba(0, 224, 200, 0.35);
+  border-radius: 2px;
+  color: #00e0c8;
+  font-size: 12px;
+  font-family: 'Share Tech Mono', monospace;
+  letter-spacing: 0.15em;
+  cursor: pointer;
+  transition: all 0.2s;
+  margin-top: 4px;
+}
+
+.btnContent {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.spinner {
+  width: 14px;
+  height: 14px;
+  border: 2px solid rgba(0, 224, 200, 0.2);
+  border-top-color: #00e0c8;
+  border-radius: 50%;
+  display: inline-block;
+  animation: spin 0.7s linear infinite;
+}
+
+.hint {
+  width: 100%;
+  margin-top: 24px;
+  padding: 14px 16px;
+  background: rgba(0, 224, 200, 0.03);
+  border: 1px dashed rgba(0, 224, 200, 0.12);
+  border-radius: 2px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.hintTitle {
+  font-size: 9px;
+  color: rgba(0, 224, 200, 0.35);
+  letter-spacing: 0.12em;
+  margin-bottom: 4px;
+}
+
+.hintRow {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.hintBadge {
+  font-size: 9px;
+  padding: 2px 8px;
+  background: rgba(0, 224, 200, 0.1);
+  border: 1px solid rgba(0, 224, 200, 0.2);
+  border-radius: 2px;
+  color: #00e0c8;
+  letter-spacing: 0.1em;
+  flex-shrink: 0;
+}
+
+.hintCode {
+  font-size: 11px;
+  color: rgba(0, 224, 200, 0.55);
+  font-family: 'Share Tech Mono', monospace;
+}
+
+.bottomBar {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 32px;
+  border-top: 1px solid rgba(0, 224, 200, 0.08);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@keyframes ping {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  70% {
+    transform: scale(1.4);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1.4);
+    opacity: 0;
+  }
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}

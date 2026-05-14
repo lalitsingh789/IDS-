@@ -1,0 +1,498 @@
+@import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Orbitron:wght@400;600;700&display=swap');
+
+/* =========================
+   ROOT
+========================= */
+.lc-root {
+  min-height: 100vh;
+  padding: 28px;
+  background: #060d12;
+  color: #e2e8f0;
+  font-family: 'Share Tech Mono', monospace;
+  animation: lcFadeIn 0.45s ease;
+}
+
+/* =========================
+   PAGE TITLE
+========================= */
+.lc-page-eyebrow {
+  font-size: 10px;
+  letter-spacing: 4px;
+  color: rgba(0, 224, 200, 0.45);
+  margin-bottom: 8px;
+  text-transform: uppercase;
+}
+
+.lc-page-title {
+  font-family:  sans;
+  font-size: 28px;
+  font-weight: 700;
+  color:white;
+  margin: 0 0 22px;
+  text-shadow: 0 0 12px rgba(0, 224, 200, 0.08);
+}
+
+/* =========================
+   META PILLS
+========================= */
+.lc-meta-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-bottom: 28px;
+}
+
+.lc-meta-pill {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 16px;
+  border-radius: 12px;
+  background: rgba(0, 224, 200, 0.04);
+  border: 1px solid rgba(0, 224, 200, 0.12);
+  font-size: 11px;
+  letter-spacing: 1px;
+}
+
+.lc-meta-pill.warn {
+  border-color: rgba(245, 158, 11, 0.25);
+  background: rgba(245, 158, 11, 0.04);
+}
+
+.lc-meta-pill.live {
+  border-color: rgba(0, 224, 200, 0.18);
+}
+
+.lc-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+}
+
+.lc-dot.teal {
+  background: #00e0c8;
+  box-shadow: 0 0 8px rgba(0, 224, 200, 0.5);
+}
+
+.lc-dot.blue {
+  background: #38bdf8;
+}
+
+.lc-dot.amber {
+  background: #f59e0b;
+}
+
+/* =========================
+   LOADING
+========================= */
+.lc-loading {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 30px;
+  color: #00e0c8;
+}
+
+.lc-spinner {
+  width: 20px;
+  height: 20px;
+  border: 2px solid rgba(0, 224, 200, 0.15);
+  border-top-color: #00e0c8;
+  border-radius: 50%;
+  animation: lcSpin 1s linear infinite;
+}
+
+/* =========================
+   RISK SUMMARY
+========================= */
+.lc-risk-strip {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  margin-bottom: 28px;
+}
+
+.lc-risk-card {
+  background: #0f172a;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 16px;
+  padding: 18px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.lc-risk-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--rc);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.25);
+}
+
+.lc-risk-card--active {
+  border-color: var(--rc);
+  box-shadow: 0 0 18px rgba(0, 224, 200, 0.1);
+}
+
+.lc-rc-label {
+  font-size: 10px;
+  letter-spacing: 2px;
+  color: rgba(226, 232, 240, 0.45);
+}
+
+.lc-rc-count {
+  font-size: 26px;
+  font-weight: 700;
+  margin: 10px 0 4px;
+  color: var(--rc);
+}
+
+.lc-rc-sub {
+  font-size: 11px;
+  color: rgba(226, 232, 240, 0.4);
+}
+
+.lc-rc-bar-track {
+  margin-top: 14px;
+  width: 100%;
+  height: 8px;
+  border-radius: 30px;
+  background: rgba(255, 255, 255, 0.04);
+  overflow: hidden;
+}
+
+.lc-rc-bar-fill {
+  height: 100%;
+  background: var(--rc);
+  border-radius: 30px;
+  transition: width 0.6s ease;
+}
+
+/* =========================
+   CHARTS
+========================= */
+.lc-charts-row {
+  display: grid;
+  grid-template-columns: 1fr 1.3fr;
+  gap: 22px;
+  margin-bottom: 30px;
+}
+
+.lc-chart-card {
+  background: #0f172a;
+  border: 1px solid rgba(255,255,255,0.05);
+  border-radius: 18px;
+  padding: 22px;
+}
+
+.lc-chart-card--wide {
+  min-height: 520px;
+}
+
+.lc-chart-label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 10px;
+  letter-spacing: 2px;
+  color: rgba(226,232,240,0.45);
+  margin-bottom: 18px;
+}
+
+.lc-chart-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--dc);
+}
+
+/* =========================
+   PIE CHART
+========================= */
+.lc-pie-svg {
+  width: 100%;
+  max-width: 360px;
+  margin: 0 auto;
+  display: block;
+}
+
+.lc-legend {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.lc-legend-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.lc-legend-swatch {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+
+.lc-legend-name {
+  flex: 1;
+  font-size: 12px;
+  color: rgba(226,232,240,0.72);
+}
+
+.lc-legend-pct {
+  font-size: 12px;
+  font-weight: 700;
+  color: #ffffff;
+}
+
+/* =========================
+   BAR CHART
+========================= */
+.lc-bar-svg {
+  width: 100%;
+  height: 320px;
+}
+
+.lc-bar-legend {
+  margin-top: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.lc-bar-legend-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.lc-bar-swatch {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+
+.lc-bar-name {
+  flex: 1;
+  font-size: 12px;
+  color: rgba(226,232,240,0.72);
+}
+
+.lc-bar-count {
+  font-size: 12px;
+  font-weight: 700;
+  color: #ffffff;
+}
+
+/* =========================
+   TABLE SECTION
+========================= */
+.lc-table-section {
+  background: #0f172a;
+  border-radius: 18px;
+  padding: 22px;
+  border: 1px solid rgba(255,255,255,0.05);
+}
+
+.lc-table-topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 18px;
+  flex-wrap: wrap;
+  margin-bottom: 18px;
+}
+
+.lc-table-controls {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.lc-search-wrap {
+  position: relative;
+}
+
+.lc-search-icon {
+  position: absolute;
+  left: 12px;
+  top: 11px;
+  color: rgba(226,232,240,0.35);
+}
+
+.lc-search {
+  width: 220px;
+  padding: 10px 14px 10px 34px;
+  border-radius: 10px;
+  border: 1px solid rgba(255,255,255,0.08);
+  background: #111827;
+  color: white;
+  outline: none;
+  font-family: inherit;
+}
+
+.lc-search:focus {
+  border-color: rgba(0,224,200,0.3);
+}
+
+.lc-clear {
+  border: none;
+  background: rgba(239,68,68,0.12);
+  color: #ef4444;
+  padding: 10px 14px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+/* =========================
+   TABLE
+========================= */
+.lc-table-wrap {
+  overflow-x: auto;
+}
+
+.lc-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.lc-th {
+  padding: 14px;
+  font-size: 11px;
+  color: #00e0c8;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+  text-align: left;
+  cursor: pointer;
+  letter-spacing: 1px;
+}
+
+.lc-td {
+  padding: 14px;
+  border-bottom: 1px solid rgba(255,255,255,0.04);
+  font-size: 12px;
+}
+
+.lc-tr {
+  animation: lcRowIn 0.45s ease both;
+}
+
+.lc-tr:hover {
+  background: rgba(0,224,200,0.03);
+}
+
+.lc-row-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  display: inline-block;
+  margin-right: 10px;
+}
+
+.lc-td--label {
+  font-weight: 600;
+}
+
+.lc-td--mono {
+  font-weight: 700;
+  color: #ffffff;
+}
+
+.lc-badge {
+  padding: 6px 12px;
+  border-radius: 30px;
+  font-size: 10px;
+  font-weight: 700;
+  background: var(--bc);
+  color: white;
+}
+
+.lc-mini-track {
+  width: 150px;
+  height: 8px;
+  background: rgba(255,255,255,0.05);
+  border-radius: 20px;
+  display: inline-block;
+  margin-right: 10px;
+  overflow: hidden;
+}
+
+.lc-mini-fill {
+  height: 100%;
+  border-radius: 20px;
+}
+
+.lc-mini-pct {
+  font-size: 11px;
+  color: rgba(226,232,240,0.55);
+}
+
+.lc-td--empty {
+  text-align: center;
+  padding: 30px;
+  color: rgba(226,232,240,0.45);
+}
+
+/* =========================
+   ANIMATIONS
+========================= */
+@keyframes lcSpin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes lcFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes lcRowIn {
+  from {
+    opacity: 0;
+    transform: translateX(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+@media (max-width: 1100px) {
+  .lc-risk-strip {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .lc-charts-row {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 700px) {
+  .lc-risk-strip {
+    grid-template-columns: 1fr;
+  }
+
+  .lc-search {
+    width: 100%;
+  }
+
+  .lc-table-topbar {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .lc-table-controls {
+    flex-direction: column;
+    align-items: stretch;
+  }
+}

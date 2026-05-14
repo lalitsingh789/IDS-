@@ -1,0 +1,149 @@
+@import url("./Dashboard.css");
+
+/* =========================================
+   ADMIN DASHBOARD OVERRIDES
+========================================= */
+
+.ids-root {
+  min-height: 100vh;
+}
+
+/* Sidebar admin highlight */
+.sb-logo {
+  background: linear-gradient(
+    180deg,
+    rgba(0, 224, 200, 0.04),
+    transparent
+  );
+}
+
+.sb-name {
+  color: var(--accent);
+  font-size: 16px;
+}
+
+.sb-sub {
+  color: var(--text-dim);
+}
+
+/* Admin metrics */
+.metric-box:nth-child(1) .metric-box-value {
+  color: var(--accent);
+}
+
+.metric-box:nth-child(2) .metric-box-value {
+  color: var(--purple);
+}
+
+.metric-box:nth-child(3) .metric-box-value {
+  color: var(--blue);
+}
+
+.metric-box:nth-child(4) .metric-box-value {
+  color: var(--green);
+}
+
+/* Upload file inputs */
+.config-card input[type="file"] {
+  width: 100%;
+  padding: 10px;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  font-family: var(--mono);
+  font-size: 12px;
+  color: var(--text);
+}
+
+.config-card input[type="file"]::-webkit-file-upload-button {
+  background: rgba(0, 224, 200, 0.08);
+  border: 1px solid var(--accent);
+  color: var(--accent);
+  padding: 7px 14px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-family: var(--sans);
+  font-weight: 600;
+  margin-right: 12px;
+}
+
+/* Better message table height */
+.panel-output {
+  min-height: 420px;
+}
+
+/* Terminal */
+.terminal {
+  min-height: 220px;
+}
+
+/* Message table */
+.report-table td {
+  vertical-align: middle;
+}
+
+/* Scroll improvements */
+.table-scroll {
+  max-height: 420px;
+}
+
+/* Admin page title */
+.page-title {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.page-title::before {
+  content: "🛡";
+  font-size: 26px;
+}
+
+/* Hover polish */
+.metric-box:hover,
+.panel-card:hover,
+.config-card:hover {
+  box-shadow: 0 0 24px rgba(0, 224, 200, 0.08);
+}
+
+/* Status cards */
+.sb-status {
+  transition: all 0.25s ease;
+}
+
+.sb-status:hover {
+  border-color: rgba(0, 224, 200, 0.25);
+}
+
+/* Mobile */
+@media (max-width: 900px) {
+  .page-title::before {
+    display: none;
+  }
+
+  .panel-output {
+    min-height: 320px;
+  }
+
+  .terminal {
+    min-height: 180px;
+  }
+  .admin-logout-btn {
+  width: 100%;
+  margin-top: 24px;
+  padding: 14px;
+  border: 1px solid rgba(255, 90, 90, 0.35);
+  background: rgba(255, 90, 90, 0.08);
+  color: #ff8a8a;
+  border-radius: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.admin-logout-btn:hover {
+  background: rgba(255, 90, 90, 0.16);
+  box-shadow: 0 0 18px rgba(255, 90, 90, 0.18);
+}
+
+}

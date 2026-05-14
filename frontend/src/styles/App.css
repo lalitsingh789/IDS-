@@ -1,0 +1,65 @@
+/* ── App shell ── */
+.app-shell {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: var(--bg);
+}
+
+/* ── Tab bar — sits above the sidebar ── */
+.app-tabs {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 44px;
+  background: #080e1a;
+  border-bottom: 1px solid var(--border2);
+  display: flex;
+  align-items: stretch;
+  padding-left: 262px;   /* align with sidebar width */
+  z-index: 200;
+}
+
+.app-tab {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0 22px;
+  background: none;
+  border: none;
+  border-bottom: 2px solid transparent;
+  color: var(--muted);
+  font-family: var(--mono);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: color 0.2s, border-color 0.2s;
+}
+
+.app-tab:hover {
+  color: var(--text);
+}
+
+.app-tab.active {
+  color: var(--accent);
+  border-bottom-color: var(--accent);
+}
+
+.app-tab-icon {
+  font-size: 14px;
+  line-height: 1;
+}
+
+/* ── page area pushed below tab bar ── */
+.app-page {
+  flex: 1;
+  padding-top: 44px;   /* height of tab bar */
+}
+
+/* AttackSearch page sits next to sidebar */
+.app-page > div:not(.ids-root) {
+  margin-left: 220px;  /* sidebar width */
+}
